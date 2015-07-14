@@ -20,28 +20,7 @@
     "thumbnail",
     "resizing"
   ],
-  "homepage": "https://github.com/blueimp/JavaScript-Load-Image",
-  "author": {
-    "name": "Sebastian Tschan",
-    "url": "https://blueimp.net"
-  },
-  "maintainers": [
-    {
-      "name": "Sebastian Tschan",
-      "url": "https://blueimp.net"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/blueimp/JavaScript-Load-Image.git"
-  },
-  "bugs": "https://github.com/blueimp/JavaScript-Load-Image/issues",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ],
+  "homepage": "https://github.com/brownbag-it/JavaScript-Load-Image",
   "main": [
     "js/load-image.js",
     "js/load-image-ios.js",
