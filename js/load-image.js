@@ -18,11 +18,16 @@
     // Loads an image for a given File object.
     // Invokes the callback with an img or optional canvas
     // element (if supported by the browser) as parameter:
-    var loadImage = function (file, callback, options) {
+    window.loadImage = function (file, callback, options) {
             var img = document.createElement('img'),
                 url,
                 oUrl;
-            img.onerror = callback;
+            img.onerror = function () {
+                console.log("img load error");
+                if (callback) {
+                    callback();
+                }
+            };
             img.onload = function () {
                 if (oUrl && !(options && options.noRevoke)) {
                     loadImage.revokeObjectURL(oUrl);
@@ -63,7 +68,7 @@
         },
         // The check for URL.revokeObjectURL fixes an issue with Opera 12,
         // which provides URL.createObjectURL but doesn't properly implement it:
-        urlAPI = (window.createObjectURL && window) ||
+        window.urlAPI = (window.createObjectURL && window) ||
             (window.URL && URL.revokeObjectURL && URL) ||
             (window.webkitURL && webkitURL);
 
