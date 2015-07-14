@@ -19,7 +19,7 @@
     // Invokes the callback with an img or optional canvas
     // element (if supported by the browser) as parameter:
     window.loadImage = function (file, callback, options) {
-            var img = document.createElement('img'),
+            var img = typeof document != 'undefined' ? document.createElement('img') : new window.canvas.Image,
                 url,
                 oUrl;
             img.onerror = function () {
@@ -156,7 +156,7 @@
     // object is passed as image, else the scaled image:
     loadImage.scale = function (img, options) {
         options = options || {};
-        var canvas = document.createElement('canvas'),
+        var canvas = typeof document != 'undefined' ? document.createElement('canvas') : new window.canvas(1,1),
             useCanvas = img.getContext ||
                 (loadImage.hasCanvasOption(options) && canvas.getContext),
             width = img.naturalWidth || img.width,
