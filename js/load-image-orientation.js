@@ -18,7 +18,7 @@
         define(['load-image'], factory);
     } else {
         // Browser globals:
-        factory(window.loadImage);
+        factory(globalWindow.loadImage);
     }
 }(function (loadImage) {
     'use strict';

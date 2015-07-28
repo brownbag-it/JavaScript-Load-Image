@@ -23,12 +23,12 @@
         define(['load-image'], factory);
     } else {
         // Browser globals:
-        factory(window.loadImage);
+        factory(globalWindow.loadImage);
     }
 }(function (loadImage) {
     'use strict';
 
-    var hasblobSlice = window.Blob && (Blob.prototype.slice ||
+    var hasblobSlice = globalWindow.Blob && (Blob.prototype.slice ||
             Blob.prototype.webkitSlice || Blob.prototype.mozSlice);
 
     loadImage.blobSlice = hasblobSlice && function () {
@@ -54,7 +54,7 @@
             // 256 KiB should contain all EXIF/ICC/IPTC segments:
             maxMetaDataSize = options.maxMetaDataSize || 262144,
             data = {},
-            noMetaData = !(window.DataView  && file && file.size >= 12 &&
+            noMetaData = !(globalWindow.DataView  && file && file.size >= 12 &&
                 file.type === 'image/jpeg' && loadImage.blobSlice);
         if (noMetaData || !loadImage.readFile(
                 loadImage.blobSlice.call(file, 0, maxMetaDataSize),

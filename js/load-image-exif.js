@@ -19,7 +19,7 @@
         define(['load-image', 'load-image-meta'], factory);
     } else {
         // Browser globals:
-        factory(window.loadImage);
+        factory(globalWindow.loadImage);
     }
 }(function (loadImage) {
     'use strict';

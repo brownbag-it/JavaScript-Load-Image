@@ -22,14 +22,14 @@
         define(['load-image'], factory);
     } else {
         // Browser globals:
-        factory(window.loadImage);
+        factory(globalWindow.loadImage);
     }
 }(function (loadImage) {
     'use strict';
 
     // Only apply fixes on the iOS platform:
-    if (!window.navigator || !window.navigator.platform ||
-             !(/iP(hone|od|ad)/).test(window.navigator.platform)) {
+    if (!globalWindow.navigator || !globalWindow.navigator.platform ||
+             !(/iP(hone|od|ad)/).test(globalWindow.navigator.platform)) {
         return;
     }
 

@@ -18,8 +18,8 @@
     // Loads an image for a given File object.
     // Invokes the callback with an img or optional canvas
     // element (if supported by the browser) as parameter:
-    window.loadImage = function (file, callback, options) {
-            var img = typeof document != 'undefined' ? document.createElement('img') : new window.canvas.Image,
+    globalWindow.loadImage = function (file, callback, options) {
+            var img = typeof document != 'undefined' ? document.createElement('img') : new globalWindow.canvas.Image,
                 url,
                 oUrl;
             img.onerror = function () {
@@ -68,9 +68,9 @@
         },
         // The check for URL.revokeObjectURL fixes an issue with Opera 12,
         // which provides URL.createObjectURL but doesn't properly implement it:
-        window.urlAPI = (window.createObjectURL && window) ||
-            (window.URL && URL.revokeObjectURL && URL) ||
-            (window.webkitURL && webkitURL);
+        globalWindow.urlAPI = (globalWindow.createObjectURL && globalWindow) ||
+            (globalWindow.URL && URL.revokeObjectURL && URL) ||
+            (globalWindow.webkitURL && webkitURL);
 
     loadImage.isInstanceOf = function (type, obj) {
         // Cross-frame instanceof check
@@ -156,7 +156,7 @@
     // object is passed as image, else the scaled image:
     loadImage.scale = function (img, options) {
         options = options || {};
-        var canvas = typeof document != 'undefined' ? document.createElement('canvas') : new window.canvas(1,1),
+        var canvas = typeof document != 'undefined' ? document.createElement('canvas') : new globalWindow.canvas(1,1),
             useCanvas = img.getContext ||
                 (loadImage.hasCanvasOption(options) && canvas.getContext),
             width = img.naturalWidth || img.width,
@@ -284,7 +284,7 @@
     // invokes the callback with the event object (load or error).
     // The result can be read via event.target.result:
     loadImage.readFile = function (file, callback, method) {
-        if (window.FileReader) {
+        if (globalWindow.FileReader) {
             var fileReader = new FileReader();
             fileReader.onload = fileReader.onerror = callback;
             method = method || 'readAsDataURL';

@@ -21,7 +21,7 @@
         define(['load-image', 'load-image-exif'], factory);
     } else {
         // Browser globals:
-        factory(window.loadImage);
+        factory(globalWindow.loadImage);
     }
 }(function (loadImage) {
     'use strict';
